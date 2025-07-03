@@ -97,13 +97,6 @@ if [ -f /roota/usr/share/chromeos-config/config.json ]; then
   "chromeos": {
     "configs": [
       {
-        "arc": {
-          "build-properties": {
-            "device": "${board}_cheets",
-            "metrics-tag": "brunch",
-            "product": "${board}"
-          }
-        },
         "brand-code": "TBD",
         "camera": {
           "count": 2
@@ -147,11 +140,11 @@ elif [ -f /roota/usr/share/chromeos-config/configfs.img ]; then
 	fi
 	rm /roota/usr/share/chromeos-config/configfs.img
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 5))); fi
-	mkdir -p /tmp/configfs/v1/chromeos/configs/0/arc/build-properties
+	#mkdir -p /tmp/configfs/v1/chromeos/configs/0/arc/build-properties
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 6))); fi
-	echo "${board}_cheets" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/device
-	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/metrics-tag
-	echo "${board}" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/product
+	#echo "${board}_cheets" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/device
+	#echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/metrics-tag
+	#echo "${board}" > /tmp/configfs/v1/chromeos/configs/0/arc/build-properties/product
 	mkdir -p /tmp/configfs/v1/chromeos/configs/0/camera
 	echo "2" > /tmp/configfs/v1/chromeos/configs/0/camera/count
 	mkdir -p /tmp/configfs/v1/chromeos/configs/0/firmware
@@ -177,6 +170,8 @@ elif [ -f /roota/usr/share/chromeos-config/configfs.img ]; then
 	echo "TBD" > /tmp/configfs/v1/chromeos/configs/0/brand-code
 	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/name
 	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/test-label
+	mkdir -p /tmp/configfs/v1/chromeos/configs/0/ui
+	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/ui/help-content-id
 	echo "{\"chromeos\": {\"configs\": [{\"identity\": {\"platform-name\": \"${board}\", \"smbios-name-match\": \"Brunch\"}}]}}" > /tmp/configfs/v1/identity.json
 	mksquashfs /tmp/configfs/ /roota/usr/share/chromeos-config/configfs.img > /dev/null
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 7))); fi

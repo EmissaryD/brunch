@@ -29,7 +29,7 @@ sed '/CONFIG_ATH\|CONFIG_DEBUG_INFO\|CONFIG_IWL\|CONFIG_MODULE_COMPRESS\|CONFIG_
 sed '/CONFIG_ATH\|CONFIG_DEBUG_INFO\|CONFIG_IWL\|CONFIG_MODULE_COMPRESS\|CONFIG_MOUSE/d' ./kernels/$1/chromeos/config/chromeos/x86_64/common.config >> ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
 cat ./kernels/$1/chromeos/config/chromeos/x86_64/chromeos-*.flavour.config | grep '^CONFIG_SND' >> ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
 cat ./kernel-patches/brunch_configs >> ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
-echo "CONFIG_LOCALVERSION=\"-$2-brunch-sebanc\"" >> ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
+echo "CONFIG_LOCALVERSION=\"-$2-brunch-vertin\"" >> ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
 make -C ./kernels/$1 O=out chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
 cp ./kernels/$1/out/.config ./kernels/$1/arch/x86/configs/chromeos_defconfig || { echo "Kernel $1 configuration failed"; exit 1; }
 }
