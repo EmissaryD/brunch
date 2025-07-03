@@ -152,10 +152,10 @@ jobs:
         if: ${{ (github.repository != 'sebanc/brunch') && (github.repository != 'sebanc/brunch-unstable') }}
         run: echo "RELEASE_VERSION_TYPE=custom" >> $GITHUB_ENV
       - name: Identify unstable version
-        if: ${{ (github.repository == 'sebanc/brunch-unstable') }}
+        if: ${{ (github.repository == 'EmissaryD/brunch-unstable') }}
         run: echo "RELEASE_VERSION_TYPE=unstable" >> $GITHUB_ENV
       - name: Identify stable version
-        if: ${{ (github.repository == 'sebanc/brunch') }}
+        if: ${{ (github.repository == 'EmissaryD/brunch') }}
         run: echo "RELEASE_VERSION_TYPE=stable" >> $GITHUB_ENV
       - name: Generate release details
         run: |
