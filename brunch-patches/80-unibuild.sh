@@ -119,8 +119,8 @@ if [ -f /roota/usr/share/chromeos-config/config.json ]; then
           "smbios-name-match": "Brunch",
           "sku-id": "0"
         },
-        "name": "brunch",
-        "test-label": "brunch"
+        "name": "amd64-fydeos_apu",
+        "test-label": "amd64-fydeos_apu"
       }
     ]
   }
@@ -129,14 +129,14 @@ CONFIG
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 4))); fi
 elif [ -f /roota/usr/share/chromeos-config/configfs.img ]; then
 	if [ ! -f /roota/usr/share/chromeos-config/identity.bin ] || [ "$(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none)" -le 1 ]; then
-		echo -ne "\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x11\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x62\x72\x75\x6e\x63\x68\x00" > /roota/usr/share/chromeos-config/identity.bin
+		echo -ne "\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x61\x6d\x64\x36\x34\x2d\x66\x79\x64\x65\x6f\x73\x5f\x61\x70\x75\x00" > /roota/usr/share/chromeos-config/identity.bin
 	elif [ "$(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none)" -eq 2 ]; then
-		echo -ne "\x02\x00\x00\x00\x01\x00\x00\x00\x11\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x62\x72\x75\x6e\x63\x68\x00" > /roota/usr/share/chromeos-config/identity.bin
+		echo -ne "\x02\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x61\x6d\x64\x36\x34\x2d\x66\x79\x64\x65\x6f\x73\x5f\x61\x70\x75\x00" > /roota/usr/share/chromeos-config/identity.bin
 	elif [ "$(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none)" -eq 3 ] || [ "$(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none)" -eq 4 ]; then
-		echo -ne "\x0$(( $(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none) ))\x00\x00\x00\x01\x00\x00\x00\x11\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x62\x72\x75\x6e\x63\x68\x00" > /roota/usr/share/chromeos-config/identity.bin
+		echo -ne "\x0$(( $(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none) ))\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x61\x6d\x64\x36\x34\x2d\x66\x79\x64\x65\x6f\x73\x5f\x61\x70\x75\x00" > /roota/usr/share/chromeos-config/identity.bin
 	else
 		echo "New identity format detected, trying latest format..." > /dev/kmsg
-		echo -ne "\x0$(( $(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none) ))\x00\x00\x00\x01\x00\x00\x00\x11\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x62\x72\x75\x6e\x63\x68\x00" > /roota/usr/share/chromeos-config/identity.bin
+		echo -ne "\x0$(( $(dd if=/roota/usr/share/chromeos-config/identity.bin bs=1 count=1 2>/dev/null | od -A none) ))\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x61\x6d\x64\x36\x34\x2d\x66\x79\x64\x65\x6f\x73\x5f\x61\x70\x75\x00" > /roota/usr/share/chromeos-config/identity.bin
 	fi
 	rm /roota/usr/share/chromeos-config/configfs.img
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 5))); fi
@@ -168,10 +168,10 @@ elif [ -f /roota/usr/share/chromeos-config/configfs.img ]; then
 	echo "Brunch" > /tmp/configfs/v1/chromeos/configs/0/identity/smbios-name-match
 	echo "0" > /tmp/configfs/v1/chromeos/configs/0/identity/sku-id
 	echo "TBD" > /tmp/configfs/v1/chromeos/configs/0/brand-code
-	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/name
-	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/test-label
+	echo "amd64-fydeos_apu" > /tmp/configfs/v1/chromeos/configs/0/name
+	echo "amd64-fydeos_apu" > /tmp/configfs/v1/chromeos/configs/0/test-label
 	mkdir -p /tmp/configfs/v1/chromeos/configs/0/ui
-	echo "brunch" > /tmp/configfs/v1/chromeos/configs/0/ui/help-content-id
+	echo "amd64-fydeos_apu" > /tmp/configfs/v1/chromeos/configs/0/ui/help-content-id
 	echo "{\"chromeos\": {\"configs\": [{\"identity\": {\"platform-name\": \"${board}\", \"smbios-name-match\": \"Brunch\"}}]}}" > /tmp/configfs/v1/identity.json
 	mksquashfs /tmp/configfs/ /roota/usr/share/chromeos-config/configfs.img > /dev/null
 	if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 7))); fi
