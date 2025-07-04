@@ -8057,3 +8057,7 @@ CONFIG_ARCH_USE_MEMTEST=y
 #
 # end of Rust hacking
 # end of Kernel hacking
+
+CONFIG_ASHMEM=y
+
+CONFIG_ESD_FS=y

@@ -30,6 +30,8 @@ echo '--gpu-sandbox-failures-fatal=no' >> /roota/etc/chrome_dev.conf
 if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 2))); fi
 echo '--enable-hardware-overlays="single-fullscreen,single-on-top"' >> /roota/etc/chrome_dev.conf
 if [ ! "$?" -eq 0 ]; then ret=$((ret + (2 ** 3))); fi
+echo '--disable-arc-opt-in-verification' >> /roota/etc/chrome_dev.conf
+echo '--fyde-auto-signin-delay=2' >> /roota/etc/chrome_dev.conf
 
 if [ "$acpi_power_button" -eq 1 ]; then
 	echo '--aura-legacy-power-button' >> /roota/etc/chrome_dev.conf
